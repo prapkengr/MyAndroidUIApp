@@ -1,0 +1,128 @@
+package com.master.myuiapplication.db;
+
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.persistence.db.SupportSQLiteDatabase;
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
+
+import com.master.myuiapplication.AppExecutors;
+import com.master.myuiapplication.db.converter.LocalDateTimeConverter;
+import com.master.myuiapplication.db.dao.BrushDataDao;
+import com.master.myuiapplication.db.entity.BrushDataEntity;
+
+import java.util.List;
+
+//@Database(entities = {BrushDataEntity.class, CommentEntity.class}, version = 1)
+@Database(entities = {BrushDataEntity.class}, version = 1)
+@TypeConverters(LocalDateTimeConverter.class)
+public abstract class BrushRoomDatabase extends RoomDatabase {
+
+    private static final int DBSIZE = 50;
+
+    private static BrushRoomDatabase sInstance;
+
+    @VisibleForTesting
+    public static final String BRUSHDATABASE_NAME = "brush-values-db";
+
+//    public abstract ProductDao productDao();
+    public abstract BrushDataDao brushDataDao();
+
+//    public abstract CommentDao commentDao();
+
+    private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
+
+    public static BrushRoomDatabase getInstance(final Context context, final AppExecutors executors) {
+        if (sInstance == null) {
+            synchronized (BrushRoomDatabase.class) {
+                if (sInstance == null) {
+                    sInstance = buildDatabase(context.getApplicationContext(), executors);
+                    sInstance.updateDatabaseCreated(context.getApplicationContext());
+                }
+            }
+        }
+        return sInstance;
+    }
+
+    /**
+     * Build the database. {@link Builder#build()} only sets up the database configuration and
+     * creates a new instance of the database.
+     * The SQLite database is only created when it's accessed for the first time.
+     */
+    private static BrushRoomDatabase buildDatabase(final Context appContext,
+                                                   final AppExecutors executors) {
+        return Room.databaseBuilder(appContext, BrushRoomDatabase.class, BRUSHDATABASE_NAME)
+                .addCallback(new Callback() {
+                    @Override
+                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                        super.onCreate(db);
+                        executors.diskIO().execute(() -> {
+                            // Add a delay to simulate a long-running operation
+//                            addDelay();
+                            // Generate the data for pre-population
+                            BrushRoomDatabase database = BrushRoomDatabase.getInstance(appContext, executors);
+
+//                            List<BrushDataEntity> brushvalues = DataGenerator.generateValues();
+/*
+                            List<CommentEntity> comments =
+                                    DataGenerator.generateCommentsForProducts(products);
+*/
+//                            insertData(database, brushvalues);
+
+                            for (int i = 0; i < DBSIZE; i++) {
+                                BrushDataEntity brushvalue = DataGenerator.generateValue();
+                                insertDataValues(database, brushvalue);
+                            }
+
+                                // notify that the database was created and it's ready to be used
+                            database.setDatabaseCreated();
+                        });
+                    }
+                }).build();
+    }
+
+    /**
+     * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
+     */
+    private void updateDatabaseCreated(final Context context) {
+        if (context.getDatabasePath(BRUSHDATABASE_NAME).exists()) {
+            setDatabaseCreated();
+        }
+    }
+
+    private void setDatabaseCreated(){
+        mIsDatabaseCreated.postValue(true);
+    }
+
+    private static void insertDataValues(final BrushRoomDatabase database, final BrushDataEntity brushvalue) {
+        database.runInTransaction(() -> {
+            database.brushDataDao().insertDataVal(brushvalue);
+        });
+    }
+
+    private static void insertData(final BrushRoomDatabase database, final List<BrushDataEntity> brushvalues){
+//                                   final List<CommentEntity> comments) {
+        database.runInTransaction(() -> {
+//            database.brushDataDao().insertDataVal(brushvalues);
+//            database.commentDao().insertAll(comments);
+        });
+    }
+
+/*
+    private static void addDelay() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ignored) {
+        }
+    }
+*/
+
+    public LiveData<Boolean> getDatabaseCreated() {
+        return mIsDatabaseCreated;
+    }
+}

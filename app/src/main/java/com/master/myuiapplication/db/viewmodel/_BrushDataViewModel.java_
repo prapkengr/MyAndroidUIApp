@@ -1,0 +1,57 @@
+package com.master.myuiapplication.db.viewmodel;
+
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
+import android.support.annotation.NonNull;
+
+import com.master.myuiapplication.BasicApp;
+import com.master.myuiapplication.db.BrushDataRepository;
+import com.master.myuiapplication.db.entity.BrushDataEntity;
+
+import java.util.List;
+
+/**
+ * The WordViewModel provides the interface between the UI and the data layer of the app,
+ * represented by the Repository
+ */
+
+public class BrushDataViewModel extends AndroidViewModel {
+
+    // MediatorLiveData can observe other LiveData objects and react on their emissions.
+    private final MediatorLiveData<List<BrushDataEntity>> mObservableProducts;
+
+    public BrushDataViewModel(Application application, String bName) {
+        super(application);
+
+        mObservableProducts = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
+
+        mObservableProducts.setValue(null);
+        LiveData<List<BrushDataEntity>> products = ((BasicApp) application).getBrushRepository()
+                .loadWeeksBrushData(bName);
+
+        // observe the changes of the products from the database and forward them
+        mObservableProducts.addSource(products, mObservableProducts::setValue);
+    }
+
+    /**
+     * Expose the LiveData Products query so the UI can observe it.
+     */
+
+//    public LiveData<List<CommentEntity>> getComments() {
+//        return mObservableComments;
+//    }
+
+    public LiveData<List<BrushDataEntity>>  getObservableBrushData() {
+        return mObservableProducts;
+    }
+
+/*
+    public void setProduct(ProductEntity product) {
+        this.product.set(product);
+    }
+*/
+
+}

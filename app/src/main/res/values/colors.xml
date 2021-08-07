@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTextBright">#eceff0</color>
+    <color name="colorPrimaryLight">#41a3ff</color>
+    <color name="translucent">#80ffffff</color>
+    <color name="barChartText">#95989a</color>
+    <color name="barChartBackLine">#EBEBEB</color>
+    <color name="barChartBar">#54ACFF</color>
+    <color name="light_orange">#fdbd39</color>
+
+</resources>

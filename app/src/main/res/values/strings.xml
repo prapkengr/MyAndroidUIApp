@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">MyUIApplication</string>
+    <string name="title_home">HOME</string>
+    <string name="label_test">TEST</string>
+    <string name="label_settings">SET</string>
+    <string name="nav_information">INFO</string>
+
+    <string name="home_icon_desc">HOME icon</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_activeness">Activity Today</string>
+    <string name="text_runtime">RunTime Today</string>
+
+    <string name="text_starttest">Start Test</string>
+    <string name="text_testing">Testing</string>
+    <string name="time_begintest">00:00:00</string>
+    <string name="label_serial_num">Serial Number:</string>
+    <string name="label_firmware">Firmware ver:</string>
+    <string name="label_hardware">Hardware ver:</string>
+    <string name="label_software">Software ver:</string>
+    <string name="label_appver">This app ver:</string>
+    <string name="no_data">No data</string>
+    <string name="label_brushstatus">Brush status:</string>
+
+    <string name="text_val_runtime">&#8230; Mins</string>
+    <string name="text_val_activday">&#8230;</string>
+    <string name="text_gen_bytes">Generate 20 bytes</string>
+
+    <string name="text_addtimer">Add inactive timer</string>
+    <string name="text_edittimer">Existing timers</string>
+    <string name="text_starttime">Start</string>
+    <string name="text_endtime">End</string>
+    <string name="text_dummysingletimer">00:00 &#8211; 00:00</string>
+    <string name="set">Set</string>
+    <string name="desc_testPlayPause">Play-Pause Testing</string>
+    <string name="desc_testStop">Stop Testing</string>
+    <string name="text_dummytimerholder">Timer x</string>
+    <string name="buttontext_delete">Delete</string>
+    <string name="text_notimers">No timers to show !</string>
+    <string name="warn_overload">Brush has been overloaded. \nPlease Power Cycle the brush.</string>
+    <string name="info_brushstatus">Brush running normal.</string>
+
+    <string name="drawer_item_select">Select Brush</string>
+    <string name="drawer_item_search">Search Brush</string>
+    <string name="drawer_item_sync">Sync Brush</string>
+    <string name="drawer_item_help">Help</string>
+    <string name="drawer_item_contact">Contact</string>
+    <string name="drawer_item_section_support">Support</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+</resources>

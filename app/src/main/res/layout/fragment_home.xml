@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal|center"
+    android:fitsSystemWindows="true"
+    android:gravity="center_vertical|center_horizontal|center"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/linearHome1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewActiv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:srcCompat="@drawable/ic_activness_copy" />
+
+        <TextView
+            android:id="@+id/textViewActiv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:lineSpacingExtra="4.7sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/text_activeness"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/buttonActivDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/colorAccent"
+            android:text="@string/text_val_activday"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearHome2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimaryLight"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:srcCompat="@drawable/ic_runtime_copy" />
+
+        <TextView
+            android:id="@+id/textViewRun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:lineSpacingExtra="4.7sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/text_runtime"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextBright"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/buttonRunDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/colorAccent"
+            android:text="@string/text_val_runtime"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!--enable "@+id/bar_view" in case using BarChartView & BarChartUtils-->
+    <!--
+    <view
+        android:id="@+id/bar_view"
+        class="com.master.myuiapplication.Utils.BarChartView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:autoSizePresetSizes="uniform"
+        android:scaleType="fitXY" />
+-->
+    <!--
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+    <view
+        class="com.master.myuiapplication.Utils.BarChartView"
+        android:id="@+id/bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="280dp" />
+    </HorizontalScrollView>
+-->
+    <lecho.lib.hellocharts.view.ColumnChartView
+        android:id="@+id/chart_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="14dip"
+        android:paddingBottom="14dip"
+        android:scaleType="fitXY">
+
+    </lecho.lib.hellocharts.view.ColumnChartView>
+
+    <Button
+        android:id="@+id/buttonGen"
+        android:layout_width="wrap_content"
+        android:layout_height="27sp"
+        android:background="@color/colorAccent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="@string/text_gen_bytes"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp" />
+
+
+</LinearLayout>

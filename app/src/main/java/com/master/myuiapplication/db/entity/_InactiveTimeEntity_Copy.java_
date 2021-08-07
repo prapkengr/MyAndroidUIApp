@@ -1,0 +1,69 @@
+package com.master.myuiapplication.db.entity;
+
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import org.threeten.bp.LocalTime;
+
+/**
+ * Entity class that represents the database
+ */
+
+@Entity(tableName = "inactivetimes")
+public class InactiveTimeEntity {
+
+    @NonNull
+    private String brushName = "DM Brush";   // brush BLE device name
+
+    @NonNull
+    private LocalTime startTime;
+
+    @NonNull
+    private LocalTime endTime;
+
+    public InactiveTimeEntity(@NonNull String bName, @NonNull LocalTime sTime, @NonNull LocalTime eTime) {
+        this.brushName = bName;
+        this.startTime = sTime;
+        this.endTime = eTime;
+    }
+
+    /*
+    * This constructor is annotated using @Ignore, because Room expects only
+    * one constructor by default in an entity class.
+    */
+
+/*
+    @Ignore
+    public InactiveTimeEntity(int id, @NonNull String word) {
+        this.id = id;
+        this.mWord = word;
+    }
+*/
+
+    public @NonNull String getBrushName() {
+        return this.brushName;
+    }
+
+    public @NonNull LocalTime getStartTime() {
+        return this.startTime;
+    }
+
+    public @NonNull LocalTime getEndTime() {
+        return this.endTime;
+    }
+
+    public void setBrushName(@NonNull String bName) {
+        this.brushName = bName;
+    }
+    public void setStartTime(@NonNull LocalTime sTime) {
+        this.startTime = sTime;
+    }
+
+    public void setEndTime(@NonNull LocalTime eTime) {
+        this.endTime = eTime;
+    }
+
+}

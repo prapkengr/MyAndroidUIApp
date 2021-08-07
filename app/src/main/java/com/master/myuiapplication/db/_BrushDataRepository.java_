@@ -1,0 +1,139 @@
+package com.master.myuiapplication.db;
+
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
+import android.os.AsyncTask;
+
+import com.master.myuiapplication.db.dao.BrushDataDao;
+import com.master.myuiapplication.db.entity.BrushDataEntity;
+
+import java.util.List;
+
+/**
+ * Repository handling the work with Brush data values.
+ *
+ *
+ * This class holds the implementation code for the methods that interact with the database.
+ * Using a repository allows to group the implementation methods together,
+ * and allows the WordViewModel to be a clean interface between the rest of the app
+ * and the database.
+ *
+ * For insert, update and delete, and longer-running queries,
+ *  must run the database interaction methods in the background.
+ *
+ * Typically, need to implement a database method
+ * is to call it on the data access object (DAO), in the background if applicable.
+ */
+
+public class BrushDataRepository {
+
+    private static BrushDataRepository sInstance;
+
+    private final BrushRoomDatabase mDatabase;
+    private MediatorLiveData<List<BrushDataEntity>> mObservableBrushData;
+
+    private BrushDataRepository(final BrushRoomDatabase database) {
+        mDatabase = database;
+        mObservableBrushData = new MediatorLiveData<>();
+
+        mObservableBrushData.addSource(mDatabase.brushDataDao().loadAllData(),
+                brushEntities -> {
+                    if (mDatabase.getDatabaseCreated().getValue() != null) {
+                        mObservableBrushData.postValue(brushEntities);
+                    }
+                });
+    }
+
+    public static BrushDataRepository getInstance(final BrushRoomDatabase database) {
+        if (sInstance == null) {
+            synchronized (BrushDataRepository.class) {
+                if (sInstance == null) {
+                    sInstance = new BrushDataRepository(database);
+                }
+            }
+        }
+        return sInstance;
+    }
+
+    public void insertDataVal(BrushDataEntity datavalue) {
+        new insertAsyncTask(mDatabase.brushDataDao()).execute(datavalue);
+    }
+
+    public void deleteAll()  {
+        new deleteAllAsyncTask(mDatabase.brushDataDao()).execute();
+    }
+
+    // Must run off main thread
+    public void deleteByTimeWeekOld() {
+        new deleteWeekOldAsyncTask(mDatabase.brushDataDao()).execute();
+    }
+
+    /**
+     * Get the list of BrushDataEntity from the database and get notified when the data changes.
+     */
+    public LiveData<List<BrushDataEntity>> getProducts() {
+        return mObservableBrushData;
+    }
+
+    public LiveData<List<BrushDataEntity>> loadWeeksBrushData(final String bName) {
+        return mDatabase.brushDataDao().loadWeeksBrushData(bName);
+    }
+
+
+    // Static inner classes below here to run database interactions in the background.
+
+    /**
+     * Inserts a word into the database.
+     */
+    private static class insertAsyncTask extends AsyncTask<BrushDataEntity, Void, Void> {
+
+        private BrushDataDao mAsyncTaskDao;
+
+        insertAsyncTask(BrushDataDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final BrushDataEntity... params) {
+            mAsyncTaskDao.insertDataVal(params[0]);
+            return null;
+        }
+    }
+
+    /**
+     * Deletes all data values from the database (does not delete the table).
+     */
+    private static class deleteAllAsyncTask extends AsyncTask<Void, Void, Void> {
+        private BrushDataDao mAsyncTaskDao;
+
+        deleteAllAsyncTask(BrushDataDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteAll();
+            return null;
+        }
+    }
+
+    /**
+     *  Deletes older than a week from the database.
+     */
+    private static class deleteWeekOldAsyncTask extends AsyncTask<Void, Void, Void> {
+        private BrushDataDao mAsyncTaskDao;
+
+        deleteWeekOldAsyncTask(BrushDataDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteByTimeWeekOld();
+            return null;
+        }
+    }
+
+
+
+}

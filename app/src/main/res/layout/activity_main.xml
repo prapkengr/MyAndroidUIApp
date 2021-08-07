@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/container"
+    android:gravity="center"
+    >
+-->
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+    <!--<ConstraintLayout-->
+<!--
+<android.support.design.widget.CoordinatorLayout
+-->
+
+<!--
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:foregroundGravity="center"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:textAlignment="center"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/colorAccent">
+    </android.support.v7.widget.Toolbar>
+-->
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:background="?attr/colorPrimary"
+        android:foregroundGravity="center"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:textAlignment="center"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/colorAccent">
+
+        <ImageView
+            android:id="@+id/toolbar_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/home_icon_desc"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            app:srcCompat="@drawable/ic_home_icon"
+            tools:layout_editor_absoluteX="188dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:textColor="@color/colorTextBright" />
+        <!--
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="15dp"
+-->
+    </android.support.v7.widget.Toolbar>
+
+
+    <FrameLayout
+    android:id="@+id/drawer_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/my_toolbar"
+    android:layout_above="@id/navigation"
+    android:layout_marginBottom="?attr/actionBarSize"
+    android:layout_marginTop="?attr/actionBarSize">
+        <!---->
+
+        <!-- the layout which will be the content of the activity  fragments
+        (which will be hosted inside the drawer (NOT the list of the drawer)) -->
+        <FrameLayout
+            android:id="@+id/container_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" >
+
+    </android.support.design.widget.BottomNavigationView>
+
+<!--
+</RelativeLayout>
+-->
+</android.support.constraint.ConstraintLayout>
+<!--</android.support.design.widget.CoordinatorLayout>-->

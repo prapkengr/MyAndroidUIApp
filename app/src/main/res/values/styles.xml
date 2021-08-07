@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="CustomAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--for DatePickerDialog-->
+        <!--<item name="DatePickerDialogCustomTheme">@style/DatePickerDialogCustomTheme</item>-->
+
+        <!--for Hamburger / back arrow-->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!--<item name="android:textColorSecondary">@android:color/white</item>-->
+    </style>
+    <!--use item name="drawerArrowStyle" if you are using dark primaryColor in your app, else remove it-->
+    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/white</item>
+    </style>
+    <!--for DatePickerDialog-->
+    <style name="DatePickerDialogCustomTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>

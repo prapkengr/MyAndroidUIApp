@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WateFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--android:alpha="0.2"-->
+
+        <LinearLayout
+            android:id="@+id/linearWate1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/backCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_background"
+            android:orientation="vertical"
+            android:paddingEnd="20sp"
+            android:paddingStart="20sp">
+
+            <LinearLayout
+                android:id="@+id/linearWate8"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:id="@+id/linearWate7"
+                android:layout_width="match_parent"
+                android:layout_height="73sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:paddingEnd="10sp"
+                    android:paddingStart="10sp"
+                    android:text="@string/text_starttest"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:typeface="sans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearWate2"
+                android:layout_width="match_parent"
+                android:layout_height="112sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="91sp"
+                    android:layout_height="104sp"
+                    android:layout_gravity="center"
+                    android:alpha="0.5"
+                    app:srcCompat="@drawable/start_play_copy" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearWate3"
+                android:layout_width="match_parent"
+                android:layout_height="73sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:paddingEnd="10sp"
+                    android:paddingStart="10sp"
+                    android:text="@string/time_begintest"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:typeface="sans" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearWate9"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearWate4"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+</FrameLayout>

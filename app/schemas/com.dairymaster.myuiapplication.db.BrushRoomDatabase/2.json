@@ -1,0 +1,73 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "83e4c7db63204e82a013d6a7c870ceeb",
+    "entities": [
+      {
+        "tableName": "brushdata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`localDateTime` TEXT NOT NULL, `brushName` TEXT NOT NULL, `brushValue` INTEGER, PRIMARY KEY(`localDateTime`, `brushName`))",
+        "fields": [
+          {
+            "fieldPath": "localDateTime",
+            "columnName": "localDateTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brushName",
+            "columnName": "brushName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brushValue",
+            "columnName": "brushValue",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "localDateTime",
+            "brushName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "inactivetimes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`brushName` TEXT NOT NULL, `inactiveTime` TEXT NOT NULL, PRIMARY KEY(`brushName`, `inactiveTime`))",
+        "fields": [
+          {
+            "fieldPath": "brushName",
+            "columnName": "brushName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inactiveTime",
+            "columnName": "inactiveTime",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "brushName",
+            "inactiveTime"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"83e4c7db63204e82a013d6a7c870ceeb\")"
+    ]
+  }
+}

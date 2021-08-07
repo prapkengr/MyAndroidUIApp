@@ -1,0 +1,117 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".JunkFragment">
+    <!--android:alpha="0.2"-->
+
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:id="@+id/linearHome1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewActiv"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="center_vertical|start"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            app:srcCompat="@drawable/ic_home_black_24dp" />
+
+        <TextView
+            android:id="@+id/textViewActiv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="@string/text_activeness"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/buttonActivDay"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:background="@color/colorAccent"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="57"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearHome2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewRun"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="center_vertical|start"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            app:srcCompat="@drawable/ic_notifications_black_24dp" />
+
+        <TextView
+            android:id="@+id/textViewRun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lineSpacingExtra="4.7sp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="@string/text_runtime"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <Button
+            android:id="@+id/buttonRunDay"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:background="@color/colorAccent"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="123 mins"
+            android:textAlignment="gravity"
+            android:textSize="12sp"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/backCircle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/circle_background"
+        >
+    </LinearLayout>
+
+
+</LinearLayout>
